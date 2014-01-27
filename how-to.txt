@@ -1,0 +1,31 @@
+Install codeception in root of project. See http://codeception.com/quickstart
+
+    wget http://codeception.com/codecept.phar
+    php codecept.phar bootstra
+
+Create new test suite using ApiGuy class. See http://codeception.com/docs/10-WebServices
+
+    php codecept.phar generate:suite api ApiGuy
+
+Create the test.
+
+    php codecept.phar generate:cept api NameOfTest
+
+Edit your test file in tests/api/NameOfTestCept.php.  See sample here http://codeception.com/docs/10-WebServices.
+
+Configure api.suite.yml in test directory.
+
+    class_name: ApiGuy
+    modules:
+        enabled: [PhpBrowser, REST, ApiHelper]
+        config:
+          PhpBrowser:
+              url: http://localhost:3000
+          REST:
+              url: http://localhost:3000
+
+Make sure extension=php_curl.dll is enabled in php.ini.  If using wamp check apache/php.ini and php/php.ini files.
+
+To run the test go to root directory and run:
+
+    php codecept.phar run api
